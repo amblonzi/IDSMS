@@ -1,0 +1,20 @@
+[project]
+name = "driving-school-backend"
+version = "0.1.0"
+description = "Backend for Driving School Management System"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.29.0",
+    "sqlmodel>=0.0.16",
+    "asyncpg>=0.29.0",
+    "alembic>=1.13.1",
+    "pydantic-settings>=2.2.1",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-multipart>=0.0.9",
+    "email-validator>=2.1.1"
+]
+
+[tool.setuptools]
+packages = ["app"]
