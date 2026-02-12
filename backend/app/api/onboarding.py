@@ -3,6 +3,7 @@ Student onboarding API endpoints.
 
 Handles student registration, profile completion, document upload, and enrollment.
 """
+from datetime import date, datetime
 from typing import Annotated, List, Optional
 from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, Request
@@ -130,7 +131,7 @@ async def register_student(
         last_name=registration.last_name,
         phone_number=registration.phone,
         national_id=registration.national_id,
-        date_of_birth=registration.date_of_birth,
+        date_of_birth=date.fromisoformat(registration.date_of_birth),
         address=registration.address,
         emergency_contact_name=registration.emergency_contact_name,
         emergency_contact_phone=registration.emergency_contact_phone
