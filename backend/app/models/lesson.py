@@ -1,8 +1,10 @@
 from typing import Optional
-from uuid import UUID, uuid4
+from uuid import UUID
 from datetime import datetime
 from enum import Enum
 from sqlmodel import Field, SQLModel
+
+from app.models.base import BaseModel
 
 class LessonStatus(str, Enum):
     SCHEDULED = "scheduled"
@@ -26,11 +28,13 @@ class LessonBase(SQLModel):
     instructor_id: UUID = Field(foreign_key="user.id")
     vehicle_id: Optional[UUID] = Field(default=None, foreign_key="vehicle.id")
 
-class Lesson(LessonBase, table=True):
-    id: Optional[UUID] = Field(default_factory=uuid4, primary_key=True)
+class Lesson(LessonBase, BaseModel, table=True):
+    pass
 
 class LessonCreate(LessonBase):
     pass
 
 class LessonRead(LessonBase):
     id: UUID
+    created_at: datetime
+    updated_at: datetime

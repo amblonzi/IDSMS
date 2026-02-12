@@ -1,8 +1,10 @@
 from typing import Optional
-from uuid import UUID, uuid4
+from uuid import UUID
 from datetime import datetime
 from enum import Enum
 from sqlmodel import Field, SQLModel
+
+from app.models.base import BaseModel
 
 class PaymentStatus(str, Enum):
     PENDING = "pending"
@@ -18,11 +20,13 @@ class PaymentBase(SQLModel):
     enrollment_id: UUID = Field(foreign_key="enrollment.id")
     method: str = Field(default="MPESA")
 
-class Payment(PaymentBase, table=True):
-    id: Optional[UUID] = Field(default_factory=uuid4, primary_key=True)
+class Payment(PaymentBase, BaseModel, table=True):
+    pass
 
 class PaymentCreate(PaymentBase):
     pass
 
 class PaymentRead(PaymentBase):
     id: UUID
+    created_at: datetime
+    updated_at: datetime

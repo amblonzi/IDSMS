@@ -1,7 +1,9 @@
 from typing import Optional
-from uuid import UUID, uuid4
-from datetime import date
+from uuid import UUID
+from datetime import date, datetime
 from sqlmodel import Field, SQLModel
+
+from app.models.base import BaseModel
 
 class VehicleBase(SQLModel):
     reg_number: str = Field(index=True, unique=True, description="Registration Number (e.g., KAA 123B)")
@@ -11,11 +13,13 @@ class VehicleBase(SQLModel):
     next_service_date: Optional[date] = None
     is_active: bool = True
 
-class Vehicle(VehicleBase, table=True):
-    id: Optional[UUID] = Field(default_factory=uuid4, primary_key=True)
+class Vehicle(VehicleBase, BaseModel, table=True):
+    pass
 
 class VehicleCreate(VehicleBase):
     pass
 
 class VehicleRead(VehicleBase):
     id: UUID
+    created_at: datetime
+    updated_at: datetime

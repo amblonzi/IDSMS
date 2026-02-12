@@ -1,8 +1,10 @@
 from typing import Optional, List
-from uuid import UUID, uuid4
-from datetime import date
+from uuid import UUID
+from datetime import date, datetime
 from enum import Enum
 from sqlmodel import Field, SQLModel, Relationship
+
+from app.models.base import BaseModel
 
 class EnrollmentStatus(str, Enum):
     ACTIVE = "active"
@@ -16,14 +18,16 @@ class CourseBase(SQLModel):
     price: float = Field(default=0.0)
     duration_weeks: int = Field(default=4)
 
-class Course(CourseBase, table=True):
-    id: Optional[UUID] = Field(default_factory=uuid4, primary_key=True)
+class Course(CourseBase, BaseModel, table=True):
+    pass
     
 class CourseCreate(CourseBase):
     pass
 
 class CourseRead(CourseBase):
     id: UUID
+    created_at: datetime
+    updated_at: datetime
 
 # Enrollment
 class EnrollmentBase(SQLModel):
@@ -33,11 +37,13 @@ class EnrollmentBase(SQLModel):
     course_id: UUID = Field(foreign_key="course.id")
     total_paid: float = Field(default=0.0)
 
-class Enrollment(EnrollmentBase, table=True):
-    id: Optional[UUID] = Field(default_factory=uuid4, primary_key=True)
+class Enrollment(EnrollmentBase, BaseModel, table=True):
+    pass
     
 class EnrollmentCreate(EnrollmentBase):
     pass
 
 class EnrollmentRead(EnrollmentBase):
     id: UUID
+    created_at: datetime
+    updated_at: datetime

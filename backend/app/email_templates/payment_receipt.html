@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Receipt</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .receipt-box {
+            background-color: #f0fdf4;
+            border: 2px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .receipt-box table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .receipt-box td {
+            padding: 10px 0;
+            border-bottom: 1px solid #d1fae5;
+        }
+
+        .receipt-box td:first-child {
+            font-weight: 600;
+            color: #065f46;
+        }
+
+        .receipt-box tr:last-child td {
+            border-bottom: none;
+        }
+
+        .amount {
+            font-size: 32px;
+            font-weight: bold;
+            color: #10b981;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .success-badge {
+            background-color: #10b981;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🚗 IDSMS</div>
+            <p style="color: #666; margin-top: 5px;">Inphora Driving School Management System</p>
+        </div>
+
+        <div class="content">
+            <h2 style="color: #1f2937; margin-top: 0; text-align: center;">💳 Payment Receipt</h2>
+
+            <div style="text-align: center;">
+                <span class="success-badge">✓ Payment Successful</span>
+            </div>
+
+            <p>Hello {{ full_name }},</p>
+
+            <p>Thank you for your payment! Your transaction has been processed successfully.</p>
+
+            <div class="amount">KES {{ "%.2f"|format(amount) }}</div>
+
+            <div class="receipt-box">
+                <table>
+                    <tr>
+                        <td>Transaction ID:</td>
+                        <td>{{ transaction_id }}</td>
+                    </tr>
+                    <tr>
+                        <td>Payment Method:</td>
+                        <td>{{ payment_method }}</td>
+                    </tr>
+                    <tr>
+                        <td>Date:</td>
+                        <td>{{ payment_date }}</td>
+                    </tr>
+                    <tr>
+                        <td>Amount:</td>
+                        <td><strong>KES {{ "%.2f"|format(amount) }}</strong></td>
+                    </tr>
+                </table>
+            </div>
+
+            <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+                <strong>📄 Keep this receipt</strong><br>
+                This is your official payment receipt. Please save it for your records.
+            </p>
+
+            <p style="font-size: 12px; color: #666; margin-top: 20px;">
+                If you have any questions about this payment, please contact our support team with the transaction ID
+                above.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Inphora Driving School Management System. All rights reserved.</p>
+            <p>This is an automated email. Please do not reply.</p>
+        </div>
+    </div>
+</body>
+
+</html>

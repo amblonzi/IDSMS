@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson Reminder</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .lesson-details {
+            background-color: #dbeafe;
+            border-left: 4px solid #2563eb;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .lesson-details p {
+            margin: 8px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .reminder-box {
+            background-color: #fef3c7;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🚗 IDSMS</div>
+            <p style="color: #666; margin-top: 5px;">Inphora Driving School Management System</p>
+        </div>
+
+        <div class="content">
+            <h2 style="color: #1f2937; margin-top: 0;">📅 Lesson Reminder</h2>
+
+            <p>Hello {{ full_name }},</p>
+
+            <p>This is a friendly reminder about your upcoming driving lesson:</p>
+
+            <div class="lesson-details">
+                <p><strong>📅 Date:</strong> {{ lesson_date }}</p>
+                <p><strong>🕐 Time:</strong> {{ lesson_time }}</p>
+                <p><strong>👨‍🏫 Instructor:</strong> {{ instructor_name }}</p>
+                {% if vehicle_info %}
+                <p><strong>🚗 Vehicle:</strong> {{ vehicle_info }}</p>
+                {% endif %}
+            </div>
+
+            <div class="reminder-box">
+                <strong>⏰ Important Reminders:</strong>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>Please arrive 10 minutes early</li>
+                    <li>Bring your learner's permit</li>
+                    <li>Wear comfortable clothing and closed-toe shoes</li>
+                </ul>
+            </div>
+
+            <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+                <strong>Need to reschedule?</strong><br>
+                If you need to reschedule or cancel, please contact us as soon as possible.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Inphora Driving School Management System. All rights reserved.</p>
+            <p>This is an automated email. Please do not reply.</p>
+        </div>
+    </div>
+</body>
+
+</html>
